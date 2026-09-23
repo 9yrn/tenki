@@ -1,5 +1,4 @@
 import "./style.css";
-
 import { searchUI } from "./ui/searchUI";
 
 const searchContainer = document.getElementById("search-container");
