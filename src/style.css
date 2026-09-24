@@ -171,44 +171,28 @@ body {
 }
 
 /* Loading screen */
-.loading-wrapper {
+.loading {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 60px 0 30px;
-  border-top: 2px dashed var(--border-color);
-  margin-top: 30px;
+  padding-bottom: 20px;
 }
 
-.kanji-spinner {
+.loading-icon {
   font-size: 5rem;
-  color: var(--accent-color);
-  animation: pulse-spin 2s ease-in-out infinite;
-  display: inline-block;
   margin-bottom: 25px;
   line-height: 1;
 }
 
-@keyframes pulse-spin {
-  0% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(0.8) rotate(180deg);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1) rotate(360deg);
-    opacity: 1;
-  }
+.sunny-loader .loading-icon {
+  color: var(--accent-color);
 }
 
-.loading-text {
-  font-size: 1.4rem;
-  letter-spacing: 0.2em;
+.loading p {
+  font-size: 1.2rem;
   font-weight: bold;
+  text-align: center;
 }
 
 /* Error message */

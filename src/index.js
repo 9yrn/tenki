@@ -10,7 +10,8 @@ import {
   setUnit,
   getUnit,
 } from "./weather/weatherData";
-import { getTodayWeather } from "./weather/weatherFilters";
+import { getTodayWeather, getWeatherCondition } from "./weather/weatherFilters";
+import { loadingUI } from "./ui/loadingUI";
 
 const searchContainer = document.getElementById("search-container");
 const weatherContainer = document.getElementById("weather-container");
@@ -19,21 +20,17 @@ const unitContainer = document.getElementById("unit-container");
 function loadingScreen() {
   weatherContainer.innerHTML = "";
 
-  const wrapper = document.createElement("div");
-  wrapper.classList.add("loading-wrapper");
+  const currentWeather = getWeatherData();
 
-  const spinner = document.createElement("div");
-  spinner.classList.add("kanji-spinner");
-  spinner.textContent = "気";
+  let condition = "default";
 
-  const text = document.createElement("p");
-  text.classList.add("loading-text");
-  text.textContent = "読み込み中...";
+  if (currentWeather) {
+    condition = getWeatherCondition(currentWeather);
+  }
 
-  wrapper.appendChild(spinner);
-  wrapper.appendChild(text);
+  const loading = loadingUI(condition);
 
-  weatherContainer.appendChild(wrapper);
+  weatherContainer.appendChild(loading);
 }
 
 function showError(message) {
@@ -86,7 +83,7 @@ async function handleSearch(location) {
   } catch (error) {
     console.error(error);
 
-    showError("Unable to retrieve weather. Please try again :).");
+    showError("Unable to retrieve weather. Please try again...¯\_(๑❛ᴗ❛๑)_/¯");
   }
 }
 
@@ -114,7 +111,9 @@ async function handleUnitChange() {
   } catch (error) {
     console.log(error);
 
-    showError("Unable to chance the temperature unit. please try again :'(");
+    showError(
+      "Unable to chance the temperature unit. please try again...ლ(ﾟдﾟლ)",
+    );
   }
 }
 
