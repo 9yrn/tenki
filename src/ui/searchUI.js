@@ -8,7 +8,7 @@ export function searchUI(onSearch) {
 
   const button = document.createElement("button");
   button.type = "submit";
-  button.textContent = "search";
+  button.textContent = "Search";
 
   searchForm.appendChild(input);
   searchForm.appendChild(button);

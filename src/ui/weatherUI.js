@@ -1,27 +1,29 @@
-export function weatherUI(weather) {
+export function weatherUI(weather, unit) {
   const container = document.createElement("div");
 
   const locationName = document.createElement("h2");
-  locationName.textContent = weather.resolvedAddress;
+  locationName.textContent = weather.location;
 
-  const today = weather.days[0];
+  const date = document.createElement("p");
+  date.textContent = weather.date;
 
   const temperature = document.createElement("p");
-  temperature.textContent = `${today.temp}°C`;
+  temperature.textContent = `${weather.temperature}°${unit === "metric" ? "C" : "F"}`;
 
   const conditions = document.createElement("p");
-  conditions.textContent = today.conditions;
+  conditions.textContent = weather.conditions;
 
   const feelsLike = document.createElement("p");
-  feelsLike.textContent = `Feels like:  ${today.feelslike}°C`;
+  feelsLike.textContent = `Feels like:  ${weather.feelsLike}°C`;
 
   const humidity = document.createElement("p");
-  humidity.textContent = `Humidity: ${today.humidity}%`;
+  humidity.textContent = `Humidity: ${weather.humidity}%`;
 
   const wind = document.createElement("p");
-  wind.textContent = `Wind: ${today.windspeed} km/h`;
+  wind.textContent = `Wind: ${weather.windSpeed} km/h`;
 
   container.appendChild(locationName);
+  container.appendChild(date);
   container.appendChild(temperature);
   container.appendChild(conditions);
   container.appendChild(feelsLike);
