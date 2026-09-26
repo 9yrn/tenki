@@ -1,10 +1,11 @@
 const API_KEY = "SFLTJZ9XNM6JCGNK5M4UCLAGU";
 
-export async function getWeather(location) {
+export async function getWeather(location, unit = "us") {
+  const unitGroup = unit === "metric" ? "metric" : "us";
   const weatherUrl =
     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/` +
     `${encodeURIComponent(location)}` +
-    `?key=${API_KEY}`;
+    `?unitGroup=${unitGroup}&key=${API_KEY}`;
 
   //Await for response on API's end to assign the results to the variable
   const response = await fetch(weatherUrl);

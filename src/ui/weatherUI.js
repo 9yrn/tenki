@@ -14,13 +14,13 @@ export function weatherUI(weather, unit) {
   conditions.textContent = weather.conditions;
 
   const feelsLike = document.createElement("p");
-  feelsLike.textContent = `Feels like:  ${weather.feelsLike}°C`;
+  feelsLike.textContent = `Feels like:  ${weather.feelsLike}°${unit === "metric" ? "C" : "F"}`;
 
   const humidity = document.createElement("p");
   humidity.textContent = `Humidity: ${weather.humidity}%`;
 
   const wind = document.createElement("p");
-  wind.textContent = `Wind: ${weather.windSpeed} km/h`;
+  wind.textContent = `Wind: ${weather.windSpeed} ${unit === "metric" ? "km/h" : "mph"}`;
 
   container.appendChild(locationName);
   container.appendChild(date);
